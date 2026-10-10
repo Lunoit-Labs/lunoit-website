@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-canvas: var(--bg-canvas);
+  --color-paper: var(--bg-paper);
+  --color-card: var(--bg-card);
+  --color-subtle: var(--border-subtle);
+  --color-strong: var(--border-strong);
+  --color-main: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-pine: var(--accent);
+  --color-pine-hover: var(--accent-hover);
+  --color-pine-soft: var(--accent-soft);
+  --color-pine-border: var(--accent-border);
+  --color-code: var(--code-bg);
+  --color-badge: var(--badge-bg);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --bg-canvas: #f8f7f4;
+    --bg-paper: #ffffff;
+    --bg-card: #ffffff;
+    --border-subtle: #e5e3dc;
+    --border-strong: #d2cfc6;
+    --border-focus: #2d6a4f;
+    --text-main: #191b1f;
+    --text-muted: #59606d;
+    --text-faint: #848c9b;
+    --accent: #2d6a4f;
+    --accent-hover: #23543e;
+    --accent-soft: #eaf2ed;
+    --accent-border: #b8d8c7;
+    --code-bg: #f0eee9;
+    --badge-bg: #eceae3;
+  }
+
+  .dark {
+    --bg-canvas: #111215;
+    --bg-paper: #17191e;
+    --bg-card: #17191e;
+    --border-subtle: #282b33;
+    --border-strong: #383c47;
+    --border-focus: #52b788;
+    --text-main: #eceef2;
+    --text-muted: #9ba2b0;
+    --text-faint: #6c7383;
+    --accent: #52b788;
+    --accent-hover: #439a72;
+    --accent-soft: #14281f;
+    --accent-border: #234d38;
+    --code-bg: #1e2128;
+    --badge-bg: #1e2128;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-canvas);
+    color: var(--text-main);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-main);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom scrollbars matching tactile editorial aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 145, 155, 0.28);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 145, 155, 0.48);
+}
