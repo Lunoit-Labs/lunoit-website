@@ -17,7 +17,7 @@ export interface LabApp {
 }
 
 export interface PlatformRelease {
-  platform: 'windows' | 'macos' | 'linux';
+  platform: 'windows';
   name: string;
   architecture: string;
   format: string;

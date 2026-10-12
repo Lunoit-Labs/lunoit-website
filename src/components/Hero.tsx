@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload }) => {
                 <span className="font-mono text-xs font-semibold text-main">Tauri v2 Native</span>
               </div>
               <p className="text-xs text-muted leading-normal">
-                Lean native Rust binaries for Windows, macOS, and Linux.
+                Lean native Rust binary for Windows.
               </p>
             </div>
           </div>

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   X,
-  Laptop,
-  Apple,
-  Terminal,
   Copy,
   Check,
   ArrowDownToLine,
@@ -11,7 +8,6 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { PLATFORM_RELEASES } from '../data/releases';
-import { PlatformRelease } from '../types';
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -19,22 +15,7 @@ interface DownloadModalProps {
 }
 
 export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose }) => {
-  const [selectedPlatform, setSelectedPlatform] = useState<PlatformRelease['platform']>('windows');
   const [copied, setCopied] = useState<boolean>(false);
-
-  // Auto-detect client OS on initial load
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const userAgent = window.navigator.userAgent.toLowerCase();
-      if (userAgent.includes('mac')) {
-        setSelectedPlatform('macos');
-      } else if (userAgent.includes('linux')) {
-        setSelectedPlatform('linux');
-      } else {
-        setSelectedPlatform('windows');
-      }
-    }
-  }, []);
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -49,24 +30,14 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
 
   if (!isOpen) return null;
 
-  const current = PLATFORM_RELEASES.find((r) => r.platform === selectedPlatform) || PLATFORM_RELEASES[0];
+  // Only the stable Windows build is offered; other platforms live on GitHub releases.
+  const current = PLATFORM_RELEASES[0];
 
   const handleCopyCommand = () => {
     if (current.commandSnippet) {
       navigator.clipboard.writeText(current.commandSnippet);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const getPlatformIcon = (platform: PlatformRelease['platform']) => {
-    switch (platform) {
-      case 'windows':
-        return Laptop;
-      case 'macos':
-        return Apple;
-      case 'linux':
-        return Terminal;
     }
   };
 
@@ -106,32 +77,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
           <p className="text-sm text-muted mt-1">
             Free and open-core under Lunoit. Built with Tauri v2 for native desktop speed and direct local disk editing.
           </p>
-        </div>
-
-        {/* Platform Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 border-b border-subtle pb-4 mb-6">
-          {PLATFORM_RELEASES.map((rel) => {
-            const Icon = getPlatformIcon(rel.platform);
-            const isSelected = rel.platform === selectedPlatform;
-            return (
-              <button
-                key={rel.platform}
-                type="button"
-                onClick={() => {
-                  setSelectedPlatform(rel.platform);
-                  setCopied(false);
-                }}
-                className={`flex flex-col items-center gap-1.5 rounded-lg border py-2.5 px-2 text-xs font-medium transition-all ${
-                  isSelected
-                    ? 'border-pine bg-pine-soft text-pine font-semibold shadow-2xs'
-                    : 'border-subtle bg-canvas/60 text-muted hover:border-strong hover:text-main'
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                <span>{rel.name}</span>
-              </button>
-            );
-          })}
         </div>
 
         {/* Platform Details Card */}
