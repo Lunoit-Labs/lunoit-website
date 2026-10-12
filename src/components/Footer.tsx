@@ -19,16 +19,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
             <div className="flex items-center gap-2.5">
               <img
                 src="/lunoite-icon.svg"
-                alt="Lunoite Labs"
+                alt="Lunoit"
                 className="h-7 w-7 rounded-lg shadow-2xs shrink-0 object-contain"
               />
               <span className="font-serif text-lg font-semibold text-main">
-                Lunoite Labs
+                Lunoit
               </span>
             </div>
             <p className="max-w-md text-muted leading-relaxed font-normal">
               An independent software laboratory crafting sovereign, distraction-free tools for engineers, writers, and researchers.
-              Home of <strong>lunoite-markdown</strong>.
+              Home of <strong>Lunoite Markdown</strong>.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
                   href="#flagship"
                   className="hover:text-main transition-colors text-main font-medium"
                 >
-                  lunoite-markdown (v1.2.3)
+                  Lunoite Markdown (v1.2.3)
                 </a>
               </li>
               <li>
@@ -102,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px]">
           <div>
-            <span>© {new Date().getFullYear()} Lunoite Labs. Built for cognitive quiet.</span>
+            <span>© {new Date().getFullYear()} Lunoit. Built for cognitive quiet.</span>
             <span className="mx-2 text-subtle">/</span>
             <span>Zero trackers, zero telemetry, 100% sovereign.</span>
           </div>

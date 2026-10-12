@@ -1,21 +1,20 @@
-# Lunoite Labs: Studio Portal & Flagship Hub
+# Lunoit: Landing Page & Flagship Showcase
 
-Official website and product showcase for **Lunoite Labs**, an independent software laboratory creating distraction-free, sovereign computing tools for writers, engineers, and researchers.
+Official website and showcase for **Lunoit**, an independent software laboratory creating distraction-free, sovereign computing tools for writers, engineers, and researchers.
 
-The studio's flagship application is **lunoite-markdown**, a lightweight inline WYSIWYG Markdown workspace and desktop IDE directly connected to files on your local drive.
+The studio's flagship application is **Lunoite Markdown**, a lightweight inline WYSIWYG Markdown workspace and desktop IDE directly connected to files on your local drive.
 
 ---
 
 ## Features & Sections
 
-- **Studio Manifesto**: Clear presentation of Lunoite Labs principles (local disk ground truth, cognitive quiet, zero vendor lock-in).
-- **Flagship Spotlight (lunoite-markdown)**: Deep technical exploration of the inline ProseMirror engine, debounced disk auto-saving, and isolated tab management.
-- **Interactive Editor & Shelf Simulator**: In-browser interactive simulator letting visitors test the paper canvas, format text, switch tabs, and inject snippet cards from the lateral shelf.
+- **Philosophy & Principles**: Clear presentation of Lunoit principles (local disk ground truth, cognitive quiet, zero vendor lock-in).
+- **Flagship Spotlight (Lunoite Markdown)**: Technical exploration of the inline ProseMirror engine, debounced disk auto-saving, and isolated tab management.
 - **Authentic Screenshot Gallery**: High-resolution, unretouched captures of production builds across light mode, obsidian dark mode, zen mode, and mobile viewports.
 - **Subsystem Architecture Deep Dive**: Detailed breakdown of tab isolation, workspace file tree persistence, full-text search, and Tauri v2 cross-platform packaging.
-- **Labs Pipeline**: Preview of upcoming software from Lunoite Labs (`lunoite-canvas`, `lunoite-clip`, and `lunoite-sync`).
-- **Multi-Platform Release Matrix**: Direct downloads and terminal installation commands for Windows (.exe/.msi), macOS (Universal .dmg), Linux (.AppImage/.deb), Android (.apk), and the Web app.
-- **Keyboard Shortcuts Reference (Ctrl+K)**: Searchable keyboard guide covering all shortcuts in lunoite-markdown.
+- **Comparison Matrix**: Detailed side-by-side comparison between Lunoite Markdown, split-screen developer editors, and cloud-locked note apps.
+- **Road Ahead**: Preview of upcoming sovereign tools from Lunoit.
+- **Multi-Platform Release Matrix**: Direct downloads and terminal installation commands for Windows (.exe/.msi), macOS (Universal .dmg), Linux (.AppImage/.deb), Android (.apk).
 
 ---
 

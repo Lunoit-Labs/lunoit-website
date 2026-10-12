@@ -64,7 +64,7 @@ export const ComparisonTable: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-12">
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-main sm:text-4xl">
-            Why lunoite-markdown exists.
+            Why Lunoite Markdown exists.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-muted">
             Bridging the gap between the speed of developer editors and the visual calm of dedicated writing tools.
@@ -83,7 +83,7 @@ export const ComparisonTable: React.FC = () => {
                   <th className="py-4 px-5 font-semibold text-main w-1/4">Capability</th>
                   <th className="py-4 px-5 font-semibold text-pine bg-pine-soft/40 w-1/3">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-semibold">lunoite-markdown</span>
+                      <span className="font-mono text-xs font-semibold">Lunoite Markdown</span>
                       <span className="rounded bg-pine text-paper px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider">
                         Flagship
                       </span>

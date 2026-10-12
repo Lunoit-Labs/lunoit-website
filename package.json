@@ -2,7 +2,7 @@
   "name": "lunoite-website",
   "private": true,
   "version": "1.0.0",
-  "author": "Lunoite Labs",
+  "author": "Lunoit",
   "type": "module",
   "scripts": {
     "dev": "vite",

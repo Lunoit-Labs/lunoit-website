@@ -31,7 +31,7 @@ export function App() {
           onOpenDownload={() => setDownloadModalOpen(true)}
         />
 
-        {/* Flagship Product Showcase (lunoite-markdown) */}
+        {/* Flagship Product Showcase (Lunoite Markdown) */}
         <FlagshipShowcase
           onOpenDownload={() => setDownloadModalOpen(true)}
         />
@@ -45,7 +45,7 @@ export function App() {
         {/* Technical Comparison Table */}
         <ComparisonTable />
 
-        {/* Lunoite Labs Road Ahead */}
+        {/* Lunoit Road Ahead */}
         <PipelineShowcase />
 
         {/* Guiding Principles & Craft Manifesto */}

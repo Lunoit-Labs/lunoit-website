@@ -2,7 +2,7 @@ import { LabApp } from '../types';
 
 export const FLAGSHIP_APP: LabApp = {
   id: 'lunoite-markdown',
-  name: 'lunoite-markdown',
+  name: 'Lunoite Markdown',
   tagline: 'Distraction-free inline WYSIWYG Markdown workspace and desktop IDE',
   description:
     'A tactile writing environment that bridges the gap between split-screen code editors and cloud-locked note silos. Writes directly to plain Markdown files on your local drive with zero proprietary database wrapping.',
@@ -19,7 +19,7 @@ export const FLAGSHIP_APP: LabApp = {
     'Strict tactile palettes: Daylight Paper (16.5:1 contrast) and Obsidian Nocturne (15.8:1)',
   ],
   primaryAction: {
-    label: 'Download lunoite-markdown',
+    label: 'Download Lunoite Markdown',
     action: 'download',
   },
 };

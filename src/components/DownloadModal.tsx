@@ -106,10 +106,10 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
             </span>
           </div>
           <h2 id="download-modal-title" className="font-serif text-2xl sm:text-3xl font-semibold text-main">
-            Download lunoite-markdown v1.2.3
+            Download Lunoite Markdown v1.2.3
           </h2>
           <p className="text-sm text-muted mt-1">
-            Free and open-core under Lunoite Labs. Built with Tauri v2 for native desktop speed and direct local disk editing.
+            Free and open-core under Lunoit. Built with Tauri v2 for native desktop speed and direct local disk editing.
           </p>
         </div>
 

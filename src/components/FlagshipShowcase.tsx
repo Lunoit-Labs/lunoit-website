@@ -101,7 +101,7 @@ const toggleZenMode = () => {
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-pine-border bg-pine-soft px-3 py-1 font-mono text-xs font-semibold text-pine mb-4">
             <Layers className="h-3.5 w-3.5" />
-            <span>Product Spotlight / First App of Lunoite Labs</span>
+            <span>Product Spotlight / First App of Lunoit</span>
           </div>
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-main sm:text-4xl">
             {FLAGSHIP_APP.name}

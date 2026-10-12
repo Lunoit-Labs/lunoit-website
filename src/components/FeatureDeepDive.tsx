@@ -44,7 +44,7 @@ export const FeatureDeepDive: React.FC = () => {
       title: 'Tauri v2 Desktop Shell & CI/CD',
       icon: Terminal,
       description:
-        'Built with Tauri v2 and Rust, lunoite-markdown delivers native desktop speed and minuscule executable sizes without the memory footprint of traditional heavy wrappers.',
+        'Built with Tauri v2 and Rust, Lunoite Markdown delivers native desktop speed and minuscule executable sizes without the memory footprint of traditional heavy wrappers.',
       highlights: [
         'Universal macOS binaries supporting Apple Silicon and Intel',
         'Windows setup with native .md file extension associations',
@@ -65,7 +65,7 @@ export const FeatureDeepDive: React.FC = () => {
             Engineered for reliability and speed.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-muted">
-            The engineering decisions powering lunoite-markdown prioritize document integrity and predictable performance.
+            The engineering decisions powering Lunoite Markdown prioritize document integrity and predictable performance.
           </p>
         </div>
 

@@ -94,7 +94,7 @@ export const ScreenshotGallery: React.FC = () => {
             Real software, captured directly.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-muted">
-            Unretouched screenshots from production builds of lunoite-markdown across light, dark, zen, and mobile views.
+            Unretouched screenshots from production builds of Lunoite Markdown across light, dark, zen, and mobile views.
           </p>
         </div>
 

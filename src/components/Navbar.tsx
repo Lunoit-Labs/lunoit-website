@@ -33,11 +33,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <img
             src="/lunoite-icon.svg"
-            alt="Lunoite Labs"
+            alt="Lunoit"
             className="h-7 w-7 rounded-lg shadow-2xs shrink-0 object-contain"
           />
           <span className="font-serif text-base font-semibold tracking-tight text-main whitespace-nowrap">
-            Lunoite Labs
+            Lunoit
           </span>
         </a>
 
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="https://github.com/Lunoit-Labs/lunoite-markdown"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="View Lunoite Labs GitHub repository"
+            aria-label="View Lunoit GitHub repository"
             title="GitHub Repository"
             className="hidden sm:flex h-8 w-8 items-center justify-center rounded-md border border-subtle bg-paper text-muted hover:text-main hover:border-strong transition-colors focus-visible:outline-2 focus-visible:outline-pine shrink-0"
           >
@@ -129,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="flex items-center justify-center gap-2 rounded-md bg-pine px-4 py-2 text-xs font-semibold text-paper"
               >
                 <ArrowDownToLine className="h-3.5 w-3.5" />
-                <span>Download lunoite-markdown</span>
+                <span>Download Lunoite Markdown</span>
               </button>
             </div>
           </div>

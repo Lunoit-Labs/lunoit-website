@@ -13,9 +13,9 @@ export const PipelineShowcase: React.FC = () => {
           One application today, more to follow.
         </h2>
         <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed font-normal max-w-2xl mx-auto">
-          Lunoite Labs is committed to building sovereign desktop and mobile software for focused craft.
-          While <strong className="font-semibold text-main">lunoite-markdown</strong> is our first release,
-          additional tools centered around quiet thinking, personal data ownership, and local computing will be added under the lab in the future.
+          Lunoit is committed to building sovereign desktop and mobile software for focused craft.
+          While <strong className="font-semibold text-main">Lunoite Markdown</strong> is our first release,
+          additional tools centered around quiet thinking, personal data ownership, and local computing will be added in the future.
         </p>
       </div>
     </section>
