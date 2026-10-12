@@ -31,14 +31,4 @@ export const PLATFORM_RELEASES: PlatformRelease[] = [
     commandSnippet: 'chmod +x lunoite-markdown-1.2.3.AppImage && ./lunoite-markdown-1.2.3.AppImage',
     notes: 'Works on Ubuntu, Debian, Fedora, Arch, and NixOS. Zero background daemon requirements.',
   },
-  {
-    platform: 'android',
-    name: 'Android',
-    architecture: 'ARM64 (aarch64)',
-    format: '.apk package',
-    fileName: 'lunoite-markdown-v1.2.3.apk',
-    fileSize: '12.1 MB',
-    commandSnippet: 'adb install lunoite-markdown-v1.2.3.apk',
-    notes: 'Reflows cleanly to mobile viewports with native virtual keyboard ergonomics.',
-  },
 ];

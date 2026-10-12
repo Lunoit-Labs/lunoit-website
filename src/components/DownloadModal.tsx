@@ -4,7 +4,6 @@ import {
   Laptop,
   Apple,
   Terminal,
-  Smartphone,
   Copy,
   Check,
   ArrowDownToLine,
@@ -31,8 +30,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
         setSelectedPlatform('macos');
       } else if (userAgent.includes('linux')) {
         setSelectedPlatform('linux');
-      } else if (userAgent.includes('android')) {
-        setSelectedPlatform('android');
       } else {
         setSelectedPlatform('windows');
       }
@@ -70,8 +67,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
         return Apple;
       case 'linux':
         return Terminal;
-      case 'android':
-        return Smartphone;
     }
   };
 
@@ -114,7 +109,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Platform Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 border-b border-subtle pb-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 border-b border-subtle pb-4 mb-6">
           {PLATFORM_RELEASES.map((rel) => {
             const Icon = getPlatformIcon(rel.platform);
             const isSelected = rel.platform === selectedPlatform;
