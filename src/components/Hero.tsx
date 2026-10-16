@@ -13,9 +13,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload }) => {
           {/* Announcement Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-subtle bg-paper pl-2 pr-3.5 py-1 text-[11px] sm:text-xs text-muted shadow-2xs mb-6">
             <img src="/lunoite-icon.svg" alt="" className="h-3.5 w-3.5 rounded-sm object-contain shrink-0" />
-            <span className="font-mono font-medium text-main">Lunoit</span>
+            <span className="font-mono font-medium text-main">Lunoit Labs</span>
             <span className="text-subtle text-muted">/</span>
-            <span className="font-serif italic text-muted">Flagship v1.2.3</span>
+            <span className="font-serif italic text-muted">Software Studio</span>
           </div>
 
           {/* Main Headline */}
@@ -25,10 +25,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload }) => {
 
           {/* Editorial Subtitle */}
           <p className="mt-6 text-lg sm:text-xl text-muted leading-relaxed font-sans font-normal">
-            Lunoit builds lightweight, distraction-free software for writers, engineers, and researchers.
-            Our flagship application, <strong className="font-semibold text-main">Lunoite Markdown</strong>,
-            provides an inline WYSIWYG paper canvas directly connected to files on your local drive:
-            zero proprietary databases, zero cloud sync lock-in, and zero split-screen friction.
+            Lunoit Labs builds lightweight, distraction-free software for writers, engineers, and researchers.
+            Explore our sovereign computing tools: <strong className="font-semibold text-main">Lunoite Markdown</strong> for tactile local writing,
+            and <strong className="font-semibold text-main">Wadd</strong> for offline-first task and life goal management.
           </p>
 
           {/* Action CTAs */}
@@ -39,15 +38,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload }) => {
               className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg bg-pine px-6 py-3 text-sm font-semibold text-paper hover:bg-pine-hover shadow-sm transition-all focus-visible:outline-2 focus-visible:outline-pine"
             >
               <ArrowDownToLine className="h-4 w-4" />
-              <span>Download Lunoite Markdown (v1.2.3)</span>
+              <span>Download Lunoite Markdown</span>
             </button>
 
             <a
-              href="#gallery"
+              href="#apps"
               className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-lg border border-subtle bg-paper px-6 py-3 text-sm font-semibold text-main hover:border-strong hover:bg-canvas shadow-2xs transition-all focus-visible:outline-2 focus-visible:outline-pine"
             >
-              <Eye className="h-4 w-4 text-pine" />
-              <span>View Screenshots</span>
+              <img src="/wadd-logo.png" alt="" className="h-4 w-4 rounded-sm object-contain shrink-0" />
+              <span>Explore Wadd & Apps</span>
             </a>
 
             <a

@@ -45,8 +45,10 @@ export function App() {
         {/* Technical Comparison Table */}
         <ComparisonTable />
 
-        {/* Lunoit Road Ahead */}
-        <PipelineShowcase />
+        {/* Lunoit Labs Applications Suite (Lunoite Markdown & Wadd) */}
+        <PipelineShowcase
+          onOpenDownload={() => setDownloadModalOpen(true)}
+        />
 
         {/* Guiding Principles & Craft Manifesto */}
         <StudioPhilosophy />

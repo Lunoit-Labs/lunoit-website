@@ -25,7 +25,7 @@ export const StudioPhilosophy: React.FC = () => {
       icon: Compass,
       title: 'Permanent Offline Autonomy',
       description:
-        'Software should never hold your writing hostage behind network connectivity or expired subscription keys. Lunoit applications operate 100% offline, boot instantaneously, and make zero background telemetry requests.',
+        'Software should never hold your writing or tasks hostage behind network connectivity or expired subscription keys. Lunoit Labs applications operate 100% offline, boot instantaneously, and make zero background telemetry requests.',
     },
   ];
 
@@ -38,7 +38,7 @@ export const StudioPhilosophy: React.FC = () => {
             <span>Guiding Principles</span>
           </div>
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-main sm:text-4xl">
-            Principles that guide Lunoit.
+            Principles that guide Lunoit Labs.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-muted">
             We build software for people who value focus, craft, and personal data sovereignty.

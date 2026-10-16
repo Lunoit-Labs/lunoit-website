@@ -1,4 +1,4 @@
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './icons/GithubIcon';
 
 interface FooterProps {
@@ -19,16 +19,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
             <div className="flex items-center gap-2.5">
               <img
                 src="/lunoite-icon.svg"
-                alt="Lunoit"
+                alt="Lunoit Labs"
                 className="h-7 w-7 rounded-lg shadow-2xs shrink-0 object-contain"
               />
               <span className="font-serif text-lg font-semibold text-main">
-                Lunoit
+                Lunoit Labs
               </span>
             </div>
             <p className="max-w-md text-muted leading-relaxed font-normal">
               An independent software laboratory crafting sovereign, distraction-free tools for engineers, writers, and researchers.
-              Home of <strong>Lunoite Markdown</strong>.
+              Home of <strong>Lunoite Markdown</strong> and <strong>Wadd</strong>.
             </p>
           </div>
 
@@ -40,15 +40,29 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#flagship"
-                  className="hover:text-main transition-colors text-main font-medium"
+                  href="https://markdown.lunoit.biz.id/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-main transition-colors text-main font-medium flex items-center gap-1"
                 >
-                  Lunoite Markdown (v1.2.3)
+                  <span>Lunoite Markdown (markdown.lunoit.biz.id)</span>
+                  <ExternalLink className="h-3 w-3 text-pine" />
                 </a>
               </li>
               <li>
-                <a href="#pipeline" className="hover:text-main transition-colors">
-                  Upcoming Tools
+                <a
+                  href="https://wadd.lunoit.biz.id/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-main transition-colors text-main font-medium flex items-center gap-1"
+                >
+                  <span>Wadd (Task & Goals)</span>
+                  <ExternalLink className="h-3 w-3 text-pine" />
+                </a>
+              </li>
+              <li>
+                <a href="#apps" className="hover:text-main transition-colors">
+                  All Applications
                 </a>
               </li>
               <li>
@@ -57,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
                   onClick={onOpenDownload}
                   className="text-pine hover:underline font-medium"
                 >
-                  Download Packages →
+                  Download Lunoite Markdown →
                 </button>
               </li>
             </ul>
@@ -102,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-subtle flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px]">
           <div>
-            <span>© {new Date().getFullYear()} Lunoit. Built for cognitive quiet.</span>
+            <span>© {new Date().getFullYear()} Lunoit Labs. Built for cognitive quiet.</span>
             <span className="mx-2 text-subtle">/</span>
             <span>Zero trackers, zero telemetry, 100% sovereign.</span>
           </div>

@@ -109,7 +109,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
             Download Lunoite Markdown v1.2.3
           </h2>
           <p className="text-sm text-muted mt-1">
-            Free and open-core under Lunoit. Built with Tauri v2 for native desktop speed and direct local disk editing.
+            Free and open-core under Lunoit Labs. Built with Tauri v2 for native desktop speed and direct local disk editing.
           </p>
         </div>
 

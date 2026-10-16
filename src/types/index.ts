@@ -10,9 +10,14 @@ export interface LabApp {
   version?: string;
   techStack: string[];
   features: string[];
+  iconUrl?: string;
+  subdomainUrl?: string;
+  repoUrl?: string;
+  releasesUrl?: string;
   primaryAction: {
     label: string;
-    action: 'download' | 'explore' | 'roadmap' | 'notify';
+    action: 'download' | 'explore' | 'roadmap' | 'notify' | 'external';
+    url?: string;
   };
 }
 

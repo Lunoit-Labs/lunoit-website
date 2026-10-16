@@ -17,8 +17,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Overview', href: '#flagship' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Lunoite Markdown', href: '#flagship' },
+    { label: 'Wadd', href: '#apps' },
+    { label: 'Screenshots', href: '#gallery' },
     { label: 'Architecture', href: '#architecture' },
     { label: 'Philosophy', href: '#philosophy' },
   ];
@@ -33,11 +34,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <img
             src="/lunoite-icon.svg"
-            alt="Lunoit"
+            alt="Lunoit Labs"
             className="h-7 w-7 rounded-lg shadow-2xs shrink-0 object-contain"
           />
           <span className="font-serif text-base font-semibold tracking-tight text-main whitespace-nowrap">
-            Lunoit
+            Lunoit Labs
           </span>
         </a>
 
@@ -76,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="https://github.com/Lunoit-Labs/lunoite-markdown"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="View Lunoit GitHub repository"
+            aria-label="View Lunoit Labs GitHub repository"
             title="GitHub Repository"
             className="hidden sm:flex h-8 w-8 items-center justify-center rounded-md border border-subtle bg-paper text-muted hover:text-main hover:border-strong transition-colors focus-visible:outline-2 focus-visible:outline-pine shrink-0"
           >

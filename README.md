@@ -1,19 +1,22 @@
-# Lunoit: Landing Page & Flagship Showcase
+# Lunoit Labs: Studio Portal & Sovereign Applications
 
-Official website and showcase for **Lunoit**, an independent software laboratory creating distraction-free, sovereign computing tools for writers, engineers, and researchers.
+Official website and showcase for **Lunoit Labs**, an independent software laboratory creating distraction-free, sovereign computing tools for writers, engineers, and researchers.
 
-The studio's flagship application is **Lunoite Markdown**, a lightweight inline WYSIWYG Markdown workspace and desktop IDE directly connected to files on your local drive.
+## Featured Applications
+
+- **Lunoite Markdown**: Lightweight inline WYSIWYG Markdown workspace and desktop IDE directly connected to files on your local drive (Tauri v2 + Rust + React 19).
+- **Wadd**: Sovereign task, life goals, and daily reflective journal management with embedded SQLite and private Google Drive sync (.NET 10 + Avalonia UI). Live at [wadd.lunoit.biz.id](https://wadd.lunoit.biz.id/).
 
 ---
 
 ## Features & Sections
 
-- **Philosophy & Principles**: Clear presentation of Lunoit principles (local disk ground truth, cognitive quiet, zero vendor lock-in).
+- **Philosophy & Principles**: Clear presentation of Lunoit Labs principles (local disk ground truth, cognitive quiet, zero vendor lock-in).
 - **Flagship Spotlight (Lunoite Markdown)**: Technical exploration of the inline ProseMirror engine, debounced disk auto-saving, and isolated tab management.
+- **Applications Suite**: Interactive cards showcasing Lunoite Markdown and Wadd with direct links to portals and release repositories.
 - **Authentic Screenshot Gallery**: High-resolution, unretouched captures of production builds across light mode, obsidian dark mode, zen mode, and mobile viewports.
 - **Subsystem Architecture Deep Dive**: Detailed breakdown of tab isolation, workspace file tree persistence, full-text search, and Tauri v2 cross-platform packaging.
 - **Comparison Matrix**: Detailed side-by-side comparison between Lunoite Markdown, split-screen developer editors, and cloud-locked note apps.
-- **Road Ahead**: Preview of upcoming sovereign tools from Lunoit.
 - **Multi-Platform Release Matrix**: Direct downloads and terminal installation commands for Windows (.exe/.msi), macOS (Universal .dmg), Linux (.AppImage/.deb), Android (.apk).
 
 ---
