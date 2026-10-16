@@ -46,9 +46,8 @@ export const FeatureDeepDive: React.FC = () => {
       description:
         'Built with Tauri v2 and Rust, Lunoite Markdown delivers native desktop speed and minuscule executable sizes without the memory footprint of traditional heavy wrappers.',
       highlights: [
-        'Universal macOS binaries supporting Apple Silicon and Intel',
         'Windows setup with native .md file extension associations',
-        'Automated GitHub Actions release matrix compiling across 4 platforms',
+        'Automated GitHub Actions release pipeline',
       ],
     },
   ];
