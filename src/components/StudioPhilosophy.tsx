@@ -1,69 +1,69 @@
 import React from 'react';
-import { Compass, HardDrive, Feather, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Compass, Zap, ShieldCheck, HeartHandshake } from 'lucide-react';
 
 export const StudioPhilosophy: React.FC = () => {
-  const principles = [
+  const pillars = [
     {
-      icon: HardDrive,
-      title: 'Local File Sovereignty',
+      icon: Zap,
+      title: 'Speed & Simplicity',
+      tagline: 'Instant response without bloated ceremony.',
       description:
-        'Your documents belong on your local hard drive in standard plain-text CommonMark. We do not wrap your thoughts in proprietary SQLite blobs or cloud databases. You can edit the exact same files with git, VS Code, or terminal tools simultaneously.',
-    },
-    {
-      icon: Feather,
-      title: 'Cognitive Quiet & Restraint',
-      description:
-        'Writing and deep reasoning require mental quiet. We deliberately reject dopamine-seeking interface patterns: zero rainbow gradient orbs, zero gamified activity rings, and zero distracting AI banners. The interface visibly defers to your words.',
+        'Software should respect your time. Our applications launch in milliseconds, write directly to local storage, and avoid heavy web wrappers or unnecessary background services.',
     },
     {
       icon: ShieldCheck,
-      title: 'Zero Dead Controls',
+      title: 'Privacy First',
+      tagline: 'Your data belongs on your hardware.',
       description:
-        'A button that does nothing is a defect, not decoration. Every menu item, shortcut keybinding, theme mode toggle, and download format has a real, testable implementation. If a feature is not complete, it does not appear.',
+        'We believe in absolute data sovereignty. Zero telemetry trackers, zero personal data harvesting, and zero proprietary lock-in. Cloud sync is always optional and direct to your personal storage.',
     },
     {
-      icon: Compass,
-      title: 'Permanent Offline Autonomy',
+      icon: HeartHandshake,
+      title: 'Crafted with Care',
+      tagline: 'Cognitive quiet and dependable utility.',
       description:
-        'Software should never hold your writing or tasks hostage behind network connectivity or expired subscription keys. Lunoit Labs applications operate 100% offline, boot instantaneously, and make zero background telemetry requests.',
+        'We build for focused minds. Interfaces defer cleanly to your content with zero manipulative dark patterns, zero notification spam, and honest software licensing without subscription traps.',
     },
   ];
 
   return (
-    <section id="philosophy" className="py-16 md:py-24 border-b border-subtle bg-paper/50">
+    <section id="about" className="py-16 md:py-24 border-b border-subtle bg-paper/50 scroll-mt-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-subtle bg-paper px-3 py-1 font-mono text-xs text-muted mb-3">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <div className="inline-flex items-center gap-2 rounded-full border border-subtle bg-paper px-3 py-1 font-mono text-xs text-muted mb-3 shadow-2xs">
             <Compass className="h-3.5 w-3.5 text-pine" />
-            <span>Guiding Principles</span>
+            <span>Studio Philosophy</span>
           </div>
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-main sm:text-4xl">
-            Principles that guide Lunoit Labs.
+            Three pillars of Lunoit Labs craft.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-muted">
-            We build software for people who value focus, craft, and personal data sovereignty.
+            Independent software designed for people who value focus, personal sovereignty, and quiet tools.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {principles.map((p, index) => {
-            const Icon = p.icon;
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {pillars.map((pillar, index) => {
+            const Icon = pillar.icon;
             return (
               <div
                 key={index}
-                className="rounded-xl border border-subtle bg-paper p-6 sm:p-8 shadow-2xs hover:border-strong transition-all flex flex-col justify-start"
+                className="rounded-xl border border-subtle bg-paper p-6 sm:p-7 shadow-2xs hover:border-strong transition-all flex flex-col justify-between"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-pine-soft text-pine">
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-pine-soft text-pine mb-4">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-serif text-xl font-semibold text-main">
-                    {p.title}
+                  <h3 className="font-serif text-xl font-semibold text-main mb-1">
+                    {pillar.title}
                   </h3>
+                  <div className="font-mono text-xs text-pine font-medium mb-3">
+                    {pillar.tagline}
+                  </div>
+                  <p className="text-xs sm:text-sm text-muted leading-relaxed font-normal">
+                    {pillar.description}
+                  </p>
                 </div>
-                <p className="text-sm text-muted leading-relaxed font-normal">
-                  {p.description}
-                </p>
               </div>
             );
           })}

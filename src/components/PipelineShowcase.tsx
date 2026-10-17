@@ -1,16 +1,17 @@
 import React from 'react';
-import { Layers, ExternalLink, ArrowRight, Check } from 'lucide-react';
+import { Layers, ArrowRight, Check, Plus, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './icons/GithubIcon';
-import { WADD_APP, FLAGSHIP_APP } from '../data/apps';
+import { APPS_CONFIG } from '../data/apps';
+import { AppConfig } from '../types';
 
 interface PipelineShowcaseProps {
   onOpenDownload?: () => void;
+  onNavigate?: (path: string) => void;
 }
 
-export const PipelineShowcase: React.FC<PipelineShowcaseProps> = ({ onOpenDownload }) => {
-
+export const PipelineShowcase: React.FC<PipelineShowcaseProps> = ({ onOpenDownload, onNavigate }) => {
   return (
-    <section id="apps" className="py-16 md:py-24 border-b border-subtle bg-canvas">
+    <section id="apps" className="py-16 md:py-24 border-b border-subtle bg-canvas scroll-mt-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
@@ -19,190 +20,149 @@ export const PipelineShowcase: React.FC<PipelineShowcaseProps> = ({ onOpenDownlo
             <span>Lunoit Labs Suite</span>
           </div>
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-main sm:text-4xl">
-            Sovereign tools for focused craft.
+            Sovereign tools for everyday productivity.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed font-normal">
             Independent, local-first software engineered by Lunoit Labs. All applications prioritize local data ownership, zero background telemetry, and cognitive quiet.
           </p>
         </div>
 
-        {/* Active Applications Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Card 1: Lunoite Markdown */}
-          <div className="rounded-2xl border border-subtle bg-paper p-6 sm:p-8 shadow-2xs flex flex-col justify-between hover:border-strong transition-all">
-            <div>
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex items-center gap-3">
-                  <img
-                    src="/lunoite-icon.svg"
-                    alt="Lunoite Markdown"
-                    className="h-10 w-10 rounded-xl shadow-2xs shrink-0 object-contain bg-canvas p-1 border border-subtle"
-                  />
-                  <div>
-                    <h3 className="font-serif text-2xl font-semibold text-main">
-                      {FLAGSHIP_APP.name}
-                    </h3>
-                    <span className="font-mono text-xs text-pine font-medium">
-                      {FLAGSHIP_APP.badge}
-                    </span>
+        {/* Dynamic Apps Bento / Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {APPS_CONFIG.map((app: AppConfig) => (
+            <div
+              key={app.id}
+              className="rounded-2xl border border-subtle bg-paper p-6 sm:p-7 shadow-2xs flex flex-col justify-between hover:border-strong transition-all"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={app.iconUrl}
+                      alt={app.name}
+                      className="h-10 w-10 rounded-xl shadow-2xs shrink-0 object-contain bg-canvas p-1.5 border border-subtle"
+                    />
+                    <div>
+                      <h3 className="font-serif text-xl font-semibold text-main">
+                        {app.name}
+                      </h3>
+                      <span className="font-mono text-xs text-pine font-medium">
+                        {app.badge}
+                      </span>
+                    </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate?.(`/${app.slug}`)}
+                    className="rounded bg-pine-soft text-pine px-2.5 py-1 font-mono text-[11px] font-semibold hover:underline inline-flex items-center gap-1 shrink-0"
+                  >
+                    <span>/{app.slug}</span>
+                  </button>
                 </div>
+
+                <p className="text-xs sm:text-sm text-muted leading-relaxed mb-5 font-normal">
+                  {app.tagline}
+                </p>
+
+                {/* Platforms & Tech Badges */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {app.platforms.map((plat) => (
+                    <span
+                      key={plat}
+                      className="rounded-md border border-subtle bg-canvas px-2 py-0.5 font-mono text-[11px] text-muted"
+                    >
+                      {plat}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Key Features Preview */}
+                <ul className="space-y-2 mb-6 text-xs text-main">
+                  {app.features.slice(0, 3).map((feat, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <Check className="h-3.5 w-3.5 text-pine shrink-0 mt-0.5" />
+                      <span className="leading-tight">{feat.title}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="pt-4 border-t border-subtle flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => onNavigate?.(`/${app.slug}`)}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-pine px-3.5 py-2 text-xs font-semibold text-paper hover:bg-pine-hover shadow-xs transition-colors"
+                >
+                  <span>Explore {app.shortName}</span>
+                  <ArrowRight className="h-3 w-3" />
+                </button>
+
+                {app.id === 'lunoite' && onOpenDownload && (
+                  <button
+                    type="button"
+                    onClick={onOpenDownload}
+                    className="inline-flex items-center gap-1 rounded-lg border border-subtle bg-canvas px-3 py-2 text-xs font-medium text-main hover:border-strong transition-colors"
+                  >
+                    <span>Download</span>
+                  </button>
+                )}
+
                 <a
-                  href={FLAGSHIP_APP.subdomainUrl}
+                  href={app.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded bg-pine-soft text-pine px-2.5 py-1 font-mono text-[11px] font-semibold hover:underline inline-flex items-center gap-1"
+                  className="inline-flex items-center gap-1 rounded-lg border border-subtle bg-canvas p-2 text-xs text-muted hover:text-main hover:border-strong transition-colors ml-auto"
+                  aria-label={`View ${app.name} GitHub repository`}
+                  title="GitHub Repository"
                 >
-                  <span>markdown.lunoit.biz.id</span>
-                  <ExternalLink className="h-3 w-3" />
+                  <GithubIcon className="h-3.5 w-3.5" />
                 </a>
               </div>
-
-              <p className="text-sm sm:text-base text-muted leading-relaxed mb-6 font-normal">
-                {FLAGSHIP_APP.description}
-              </p>
-
-              {/* Tech Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {FLAGSHIP_APP.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md border border-subtle bg-canvas px-2.5 py-1 font-mono text-xs text-muted"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Key Features List */}
-              <ul className="space-y-2.5 mb-8">
-                {FLAGSHIP_APP.features.slice(0, 4).map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-main">
-                    <Check className="h-4 w-4 text-pine shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
+          ))}
 
-            {/* Actions */}
-            <div className="pt-4 border-t border-subtle flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={onOpenDownload}
-                className="inline-flex items-center gap-2 rounded-lg bg-pine px-4 py-2.5 text-xs font-semibold text-paper hover:bg-pine-hover shadow-xs transition-colors"
-              >
-                <span>Download v1.2.3</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </button>
-
-              <a
-                href="#flagship"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-subtle bg-canvas px-4 py-2.5 text-xs font-medium text-main hover:border-strong transition-colors"
-              >
-                <span>View Architecture</span>
-              </a>
-
-              <a
-                href={FLAGSHIP_APP.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-subtle bg-canvas p-2.5 text-xs text-muted hover:text-main hover:border-strong transition-colors ml-auto"
-                aria-label="View Lunoite Markdown GitHub repository"
-                title="GitHub Repository"
-              >
-                <GithubIcon className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Card 2: Wadd (wadd-todo-app) */}
-          <div className="rounded-2xl border border-subtle bg-paper p-6 sm:p-8 shadow-2xs flex flex-col justify-between hover:border-strong transition-all">
+          {/* Card 3: Coming Soon Card */}
+          <div className="rounded-2xl border-2 border-dashed border-subtle bg-paper/50 p-6 sm:p-7 flex flex-col justify-between hover:border-muted/50 transition-all">
             <div>
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex items-center gap-3">
-                  <img
-                    src="/wadd-logo.png"
-                    alt="Wadd"
-                    className="h-10 w-10 rounded-xl shadow-2xs shrink-0 object-contain bg-canvas p-1 border border-subtle"
-                  />
-                  <div>
-                    <h3 className="font-serif text-2xl font-semibold text-main">
-                      {WADD_APP.name}
-                    </h3>
-                    <span className="font-mono text-xs text-pine font-medium">
-                      {WADD_APP.badge}
-                    </span>
-                  </div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-canvas border border-subtle flex items-center justify-center text-muted shrink-0">
+                  <Plus className="h-5 w-5" />
                 </div>
-                <a
-                  href={WADD_APP.subdomainUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded bg-pine-soft text-pine px-2.5 py-1 font-mono text-[11px] font-semibold hover:underline inline-flex items-center gap-1"
-                >
-                  <span>wadd.lunoit.biz.id</span>
-                  <ExternalLink className="h-3 w-3" />
-                </a>
+                <div>
+                  <h3 className="font-serif text-xl font-semibold text-main">
+                    More in Development
+                  </h3>
+                  <span className="font-mono text-xs text-muted">
+                    Lunoit Labs Pipeline
+                  </span>
+                </div>
               </div>
 
-              <p className="text-sm sm:text-base text-muted leading-relaxed mb-6 font-normal">
-                {WADD_APP.description}
+              <p className="text-xs sm:text-sm text-muted leading-relaxed mb-5 font-normal">
+                We are actively prototyping focused, sovereign productivity tools designed for cognitive quiet, local disk truth, and zero vendor lock-in.
               </p>
 
-              {/* Tech Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {WADD_APP.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md border border-subtle bg-canvas px-2.5 py-1 font-mono text-xs text-muted"
-                  >
-                    {tech}
-                  </span>
-                ))}
+              <div className="rounded-lg bg-canvas p-4 border border-subtle text-xs space-y-2 text-muted">
+                <div className="font-medium text-main">Active Research Areas:</div>
+                <ul className="space-y-1 list-disc pl-4 text-[11px]">
+                  <li>Offline cognitive search and indexing</li>
+                  <li>Local canvas and diagramming workspace</li>
+                  <li>Distraction-free deep work timers</li>
+                </ul>
               </div>
-
-              {/* Key Features List */}
-              <ul className="space-y-2.5 mb-8">
-                {WADD_APP.features.slice(0, 4).map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-main">
-                    <Check className="h-4 w-4 text-pine shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
-            {/* Actions */}
-            <div className="pt-4 border-t border-subtle flex flex-wrap items-center gap-3">
+            <div className="pt-6 border-t border-subtle/60 flex items-center justify-between text-xs font-mono text-muted">
+              <span>Status: Prototyping</span>
               <a
-                href={WADD_APP.subdomainUrl}
+                href="https://github.com/Lunoit-Labs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-pine px-4 py-2.5 text-xs font-semibold text-paper hover:bg-pine-hover shadow-xs transition-colors"
+                className="text-pine hover:underline inline-flex items-center gap-1"
               >
-                <span>Open Wadd Website</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-
-              <a
-                href={WADD_APP.releasesUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-subtle bg-canvas px-4 py-2.5 text-xs font-medium text-main hover:border-strong transition-colors"
-              >
-                <span>Releases & APK</span>
-              </a>
-
-              <a
-                href={WADD_APP.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-subtle bg-canvas p-2.5 text-xs text-muted hover:text-main hover:border-strong transition-colors ml-auto"
-                aria-label="View Wadd GitHub repository"
-                title="GitHub Repository"
-              >
-                <GithubIcon className="h-4 w-4" />
+                <span>Follow on GitHub</span>
+                <ExternalLink className="h-3 w-3" />
               </a>
             </div>
           </div>

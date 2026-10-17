@@ -63,7 +63,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose })
         <div className="mb-6">
           <div className="flex items-center gap-2 text-pine mb-1">
             <img
-              src="/lunoite-icon.svg"
+              src="/lunoite-logo.png"
               alt=""
               className="h-4 w-4 rounded-sm object-contain shrink-0"
             />

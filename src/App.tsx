@@ -1,20 +1,116 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { FlagshipShowcase } from './components/FlagshipShowcase';
-import { ScreenshotGallery } from './components/ScreenshotGallery';
-import { FeatureDeepDive } from './components/FeatureDeepDive';
-import { ComparisonTable } from './components/ComparisonTable';
 import { PipelineShowcase } from './components/PipelineShowcase';
 import { StudioPhilosophy } from './components/StudioPhilosophy';
 import { Footer } from './components/Footer';
 import { DownloadModal } from './components/DownloadModal';
+import { AppLandingPage } from './components/AppLandingPage';
+import { AppLegalPage } from './components/AppLegalPage';
+import { APPS_CONFIG } from './data/apps';
+import { AppConfig } from './types';
+
+function getNormalizedPath(): string {
+  // Check pathname first
+  const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
+  if (pathname !== '/') {
+    return pathname;
+  }
+  // Fallback to hash route (e.g. #/lunoite or #/wadd/privacy)
+  const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '/').replace(/\/+$/, '') || '/';
+  return hash;
+}
 
 export function App() {
   const { theme, toggleTheme } = useTheme();
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState<string>(getNormalizedPath);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(getNormalizedPath());
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, []);
+
+  const handleNavigate = (path: string) => {
+    // Handle in-page anchors on homepage (e.g. '/#apps' or '#about')
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const anchor = path.replace(/^\//, '');
+      if (currentPath !== '/') {
+        window.history.pushState({}, '', '/' + anchor);
+        setCurrentPath('/');
+        setTimeout(() => {
+          const el = document.querySelector(anchor);
+          el?.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      } else {
+        window.history.pushState({}, '', anchor);
+        const el = document.querySelector(anchor);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+
+    window.history.pushState({}, '', path);
+    setCurrentPath(path.toLowerCase().replace(/\/+$/, '') || '/');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  // Helper to find matching app by slug or alias
+  const findAppForPath = (path: string): AppConfig | undefined => {
+    return APPS_CONFIG.find(
+      (app) =>
+        '/' + app.slug === path ||
+        app.aliases?.includes(path)
+    );
+  };
+
+  // Dynamic Route Matching:
+  // 1. Legal Pages: /[slug]/privacy or /[slug]/terms
+  const legalPrivacyMatch = currentPath.match(/^\/([^/]+)\/privacy$/);
+  if (legalPrivacyMatch) {
+    const slug = legalPrivacyMatch[1];
+    const app = APPS_CONFIG.find((a) => a.slug === slug || a.aliases?.includes('/' + slug));
+    if (app) {
+      return <AppLegalPage app={app} type="privacy" onNavigate={handleNavigate} />;
+    }
+  }
+
+  const legalTermsMatch = currentPath.match(/^\/([^/]+)\/terms$/);
+  if (legalTermsMatch) {
+    const slug = legalTermsMatch[1];
+    const app = APPS_CONFIG.find((a) => a.slug === slug || a.aliases?.includes('/' + slug));
+    if (app) {
+      return <AppLegalPage app={app} type="terms" onNavigate={handleNavigate} />;
+    }
+  }
+
+  // Fallback standalone /privacy or /terms
+  if (currentPath === '/privacy') {
+    const waddApp = APPS_CONFIG.find((a) => a.slug === 'wadd')!;
+    return <AppLegalPage app={waddApp} type="privacy" onNavigate={handleNavigate} />;
+  }
+  if (currentPath === '/terms') {
+    const waddApp = APPS_CONFIG.find((a) => a.slug === 'wadd')!;
+    return <AppLegalPage app={waddApp} type="terms" onNavigate={handleNavigate} />;
+  }
+
+  // 2. Dedicated Product Landing Pages: /[slug] (e.g. /lunoite, /wadd, /markdown)
+  const matchedApp = findAppForPath(currentPath);
+  if (matchedApp) {
+    return <AppLandingPage app={matchedApp} onNavigate={handleNavigate} />;
+  }
+
+  // 3. Root Studio Homepage: /
   return (
     <div className="min-h-screen bg-canvas text-main font-sans selection:bg-pine selection:text-paper antialiased">
       {/* Sticky Header Navigation */}
@@ -22,44 +118,34 @@ export function App() {
         theme={theme}
         onToggleTheme={toggleTheme}
         onOpenDownload={() => setDownloadModalOpen(true)}
+        onNavigate={handleNavigate}
       />
 
-      {/* Main Content Area */}
+      {/* Main Studio Hub Content */}
       <main id="main-content">
         {/* Studio Hero Section */}
         <Hero
           onOpenDownload={() => setDownloadModalOpen(true)}
+          onNavigate={handleNavigate}
         />
 
-        {/* Flagship Product Showcase (Lunoite Markdown) */}
-        <FlagshipShowcase
-          onOpenDownload={() => setDownloadModalOpen(true)}
-        />
-
-        {/* Authentic Screenshot Gallery */}
-        <ScreenshotGallery />
-
-        {/* Architecture & Engineering Subsystems */}
-        <FeatureDeepDive />
-
-        {/* Technical Comparison Table */}
-        <ComparisonTable />
-
-        {/* Lunoit Labs Applications Suite (Lunoite Markdown & Wadd) */}
+        {/* Dynamic Apps Bento / Grid Driven by APPS_CONFIG */}
         <PipelineShowcase
           onOpenDownload={() => setDownloadModalOpen(true)}
+          onNavigate={handleNavigate}
         />
 
-        {/* Guiding Principles & Craft Manifesto */}
+        {/* Studio Philosophy & 3 Pillars */}
         <StudioPhilosophy />
       </main>
 
-      {/* Global Footer */}
+      {/* Global Studio Footer */}
       <Footer
         onOpenDownload={() => setDownloadModalOpen(true)}
+        onNavigate={handleNavigate}
       />
 
-      {/* Interactive Download Modal */}
+      {/* Interactive Download Modal for Lunoite */}
       <DownloadModal
         isOpen={downloadModalOpen}
         onClose={() => setDownloadModalOpen(false)}
