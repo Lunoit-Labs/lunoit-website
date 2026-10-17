@@ -12,10 +12,23 @@ import { APPS_CONFIG } from './data/apps';
 import { AppConfig } from './types';
 
 function getNormalizedPath(): string {
-  // Check pathname first
-  const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
-  if (pathname !== '/') {
-    return pathname;
+  const hostname = window.location.hostname.toLowerCase();
+  const rawPathname = window.location.pathname.toLowerCase().replace(/\/+$/, '') || '/';
+
+  // Subdomain routing support for Cloudflare Pages custom domains
+  if (hostname.startsWith('wadd.')) {
+    if (rawPathname === '/' || rawPathname === '') return '/wadd';
+    if (!rawPathname.startsWith('/wadd')) return '/wadd' + rawPathname;
+    return rawPathname;
+  }
+  if (hostname.startsWith('markdown.')) {
+    if (rawPathname === '/' || rawPathname === '') return '/lunoite';
+    if (!rawPathname.startsWith('/lunoite')) return '/lunoite' + rawPathname;
+    return rawPathname;
+  }
+
+  if (rawPathname !== '/') {
+    return rawPathname;
   }
   // Fallback to hash route (e.g. #/lunoite or #/wadd/privacy)
   const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '/').replace(/\/+$/, '') || '/';
